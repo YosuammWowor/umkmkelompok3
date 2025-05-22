@@ -7,6 +7,9 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 
+// Librari JSON
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -34,26 +37,37 @@ public class SigninActivity {
             handler.post(() -> {
                 global app = (global) ((Activity) context).getApplication();
 
-                if (result.equals("Login Failed") || result.equals("Missing username or password")) {
+                try {
+                    JSONObject json = new JSONObject(result);
+                    String status = json.getString("status");
+
+                    if (status.equals("success")) {
+                        Log.d("Login", "Login Success: " + json.toString());
+
+                        // Simpan informasi pengguna
+                        app.setIsLogin(true);
+                        app.setEmail(json.getString("email"));
+                        app.setUsername(json.getString("username"));
+                        app.setDeskripsiPengguna(json.getString("deskripsi"));
+
+                        Utils.replaceActivity((Activity) context, ProfilActivity.class);
+                    } else {
+                        app.setIsLogin(false);
+                        Log.d("Login", "Login Failed: " + json.getString("message"));
+                    }
+                } catch (Exception e) {
                     app.setIsLogin(false);
-                    Log.d("Login", "Login Failed");
-                } else {
-                    app.setIsLogin(true);
-                    Log.d("Login", "Login Success: " + result);
-
-                    // Set informasi pengguna
-
-                    // Optional: Navigate to Home/Profile/etc
-                     Utils.replaceActivity((Activity) context, HomeActivity.class);
+                    Log.e("Login", "Parsing error: " + e.getMessage());
                 }
             });
         });
     }
 
-    private String loginTask(String username, String password) {
+
+    private String loginTask(String email, String password) {
         try {
             String link = "http://10.0.2.2/MOBILE_PROGRAMMING/Login.php";
-            String data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8")
+            String data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8")
                     + "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
 
             URL url = new URL(link);
@@ -78,7 +92,8 @@ public class SigninActivity {
 
             return sb.toString();
         } catch (Exception e) {
-            return "Exception: " + e.getMessage();
+            return "{\"status\":\"error\",\"message\":\"" + e.getMessage() + "\"}";
         }
     }
+
 }

@@ -25,12 +25,16 @@ public class ProdukActivity extends AppCompatActivity {
 
             if (id == R.id.Produk) {
                 // This Class
-            } else if (id == R.id.Order) {
-                Utils.replaceActivity(ProdukActivity.this, OrderActivity.class);
-                overridePendingTransition(0, 0);
             } else if (id == R.id.Home) {
                 Utils.replaceActivity(ProdukActivity.this, HomeActivity.class);
                 overridePendingTransition(0, 0);
+            } else if (id == R.id.Order) {
+                if (app.getIsLogin()) {
+                    Utils.replaceActivity(ProdukActivity.this, OrderActivity.class);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Utils.popUpLogin(ProdukActivity.this); // Sekarang ini fungsi dari parent
+                }
             } else {
                 if (app.getIsLogin()) {
                     Utils.replaceActivity(ProdukActivity.this, ProfilActivity.class);

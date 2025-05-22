@@ -3,6 +3,8 @@ package com.example.umkmkelompok3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +38,23 @@ public class ProfilActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
             return true;
+        });
+
+        // Ambil data dari global variabel
+        global app = (global) getApplication();
+
+        // Set nama pengguna
+        TextView namaPengguna = findViewById(R.id.namaPengguna);
+        namaPengguna.setText(app.getUsername());
+
+        // Set deskripsi pengguna
+        TextView deskripsiPengguna = findViewById(R.id.deskripsiPengguna);
+        deskripsiPengguna.setText(app.getDeskripsiPengguna());
+
+        Button btnKeluar = findViewById(R.id.btnKeluar);
+        btnKeluar.setOnClickListener(v -> {
+            app.setIsLogin(false);
+            Utils.replaceActivity(ProfilActivity.this, HomeActivity.class);
         });
     }
 }

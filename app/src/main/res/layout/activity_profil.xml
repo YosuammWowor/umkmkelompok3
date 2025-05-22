@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
       <!-- Bar Atas -->
-      <RelativeLayout
+      <!--<RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:padding="8dp">
@@ -37,7 +37,7 @@
             android:src="@android:drawable/ic_menu_edit"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true" />
-      </RelativeLayout>
+      </RelativeLayout>-->
 
       <!-- Foto Profil -->
       <ImageView
@@ -53,6 +53,7 @@
 
       <!-- Nama Pengguna -->
       <TextView
+          android:id="@+id/namaPengguna"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Nama Pengguna"
@@ -63,13 +64,22 @@
 
       <!-- Deskripsi -->
       <TextView
+          android:id="@+id/deskripsiPengguna"
           android:layout_width="match_parent"
-          android:layout_height="150dp"
+          android:layout_height="match_parent"
           android:background="#D3D3D3"
           android:text="Deskripsi singkat tentang pengguna atau informasi lainnya."
           android:padding="12dp"
           android:gravity="top"
           android:textSize="14sp" />
+
+      <Button
+          android:id="@+id/btnKeluar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="15dp"
+          android:layout_gravity="center"
+          android:text="KELUAR"/>
 
     </LinearLayout>
   </ScrollView>

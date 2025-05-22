@@ -6,6 +6,7 @@ public class global extends Application {
     private Boolean isLogin = false;
     private String email = "";
     private String username = "";
+    private String deskripsiPengguna = "";
 
     protected Boolean getIsLogin() {
         return this.isLogin;
@@ -29,5 +30,13 @@ public class global extends Application {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getDeskripsiPengguna() {
+        return deskripsiPengguna;
+    }
+
+    public void setDeskripsiPengguna(String deskripsiPengguna) {
+        this.deskripsiPengguna = deskripsiPengguna;
     }
 }

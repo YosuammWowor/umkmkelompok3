@@ -30,8 +30,12 @@ public class HomeActivity extends AppCompatActivity {
                 Utils.replaceActivity(HomeActivity.this, ProdukActivity.class);
                 overridePendingTransition(0, 0);
             } else if (id == R.id.Order) {
-                Utils.replaceActivity(HomeActivity.this, OrderActivity.class);
-                overridePendingTransition(0, 0);
+                if (app.getIsLogin()) {
+                    Utils.replaceActivity(HomeActivity.this, OrderActivity.class);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Utils.popUpLogin(HomeActivity.this); // Sekarang ini fungsi dari parent
+                }
             } else {
                 if (app.getIsLogin()) {
                     Utils.replaceActivity(HomeActivity.this, ProfilActivity.class);
