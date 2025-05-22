@@ -2,19 +2,19 @@ package com.example.umkmkelompok3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfilActivity extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Set item aktif sekarang
@@ -23,20 +23,19 @@ public class ProfilActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
-            if (id == R.id.Home) {
-                startActivity(new Intent(this, HomeActivity.class));
-                super.onBackPressed();
-                overridePendingTransition(0, 0);
-                return true;
+            if (id == R.id.Profil) {
+                // This Class
             } else if (id == R.id.Produk) {
-                startActivity(new Intent(this, ProdukActivity.class));
+                Utils.replaceActivity(ProfilActivity.this, ProdukActivity.class);
                 overridePendingTransition(0, 0);
-                return true;
+            } else if (id == R.id.Order) {
+                Utils.replaceActivity(ProfilActivity.this, OrderActivity.class);
+                overridePendingTransition(0, 0);
             } else {
-                startActivity(new Intent(this, OrderActivity.class));
+                Utils.replaceActivity(ProfilActivity.this, HomeActivity.class);
                 overridePendingTransition(0, 0);
-                return true;
             }
+            return true;
         });
     }
 }

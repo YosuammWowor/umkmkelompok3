@@ -1,20 +1,18 @@
 package com.example.umkmkelompok3;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OrderActivity extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Set item aktif sekarang
@@ -23,19 +21,25 @@ public class OrderActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
-            if (id == R.id.Home) {
-                startActivity(new Intent(this, HomeActivity.class));
-                overridePendingTransition(0, 0);
-                return true;
+            global app = (global) getApplication();
+
+            if (id == R.id.Order) {
+                // This Class
             } else if (id == R.id.Produk) {
-                startActivity(new Intent(this, ProdukActivity.class));
+                Utils.replaceActivity(OrderActivity.this, ProdukActivity.class);
                 overridePendingTransition(0, 0);
-                return true;
+            } else if (id == R.id.Home) {
+                Utils.replaceActivity(OrderActivity.this, HomeActivity.class);
+                overridePendingTransition(0, 0);
             } else {
-                startActivity(new Intent(this, ProfilActivity.class));
-                overridePendingTransition(0, 0);
-                return true;
+                if (app.getIsLogin()) {
+                    Utils.replaceActivity(OrderActivity.this, ProfilActivity.class);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Utils.popUpLogin(OrderActivity.this); // Sekarang ini fungsi dari parent
+                }
             }
+            return true;
         });
     }
 }

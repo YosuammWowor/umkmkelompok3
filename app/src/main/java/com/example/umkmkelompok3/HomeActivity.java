@@ -1,21 +1,19 @@
 package com.example.umkmkelompok3;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Set item aktif sekarang
@@ -24,21 +22,31 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
+            global app = (global) getApplication();
+
             if (id == R.id.Home) {
-                return true; // Sudah di sini
+                // This Class
             } else if (id == R.id.Produk) {
-                startActivity(new Intent(this, ProdukActivity.class));
+                Utils.replaceActivity(HomeActivity.this, ProdukActivity.class);
                 overridePendingTransition(0, 0);
-                return true;
             } else if (id == R.id.Order) {
-                startActivity(new Intent(this, OrderActivity.class));
+                Utils.replaceActivity(HomeActivity.this, OrderActivity.class);
                 overridePendingTransition(0, 0);
-                return true;
             } else {
-                startActivity(new Intent(this, ProfilActivity.class));
-                overridePendingTransition(0, 0);
-                return true;
+                if (app.getIsLogin()) {
+                    Utils.replaceActivity(HomeActivity.this, ProfilActivity.class);
+                    overridePendingTransition(0, 0);
+                } else {
+                    Utils.popUpLogin(HomeActivity.this); // Sekarang ini fungsi dari parent
+                }
             }
+            return true;
         });
+
+        global app = (global) getApplication();
+        Log.d("Debug", app.getIsLogin().toString());
+        Log.d("Debug", app.getEmail());
+        Log.d("Debug", app.getUsername());
+
     }
 }
