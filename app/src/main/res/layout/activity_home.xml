@@ -19,172 +19,99 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="25dp"
             android:background="@color/yellow">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Home - Produk Kami"
+                android:text="Tourism Cafe Polimdo"
                 android:textStyle="bold"
-                android:textSize="32dp"/>
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:paddingTop="16dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Rekomendasi Produk Kami"
-                android:textSize="20dp"/>
+                android:text="Rekomendasi"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                android:paddingBottom="8dp"/>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:flexWrap="wrap"
-                app:justifyContent="center">
+                app:justifyContent="center"
+                android:layout_marginVertical="10dp">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:gravity="center">
+                        android:background="#fff">
+
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Produk 1"/>
-                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/red"
-                            android:layout_margin="10dp"/>
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/tinutuan" />
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Makanan"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
                             android:gravity="center"
-                            android:text="Check your bank activities"
-                            android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/black" />
+
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_margin="10dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Produk 2"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/red"
-                            android:layout_margin="10dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Check your bank activities"
-                            android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:gravity="center">
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Produk 3"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/red"
-                            android:layout_margin="10dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Check your bank activities"
-                            android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                        android:background="#fff">
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Produk 4"/>
-                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/red"
-                            android:layout_margin="10dp"/>
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/latte" />
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Minuman"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
                             android:gravity="center"
-                            android:text="Check your bank activities"
-                            android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/black" />
+
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </com.google.android.flexbox.FlexboxLayout>
+
         </LinearLayout>
 
     </LinearLayout>

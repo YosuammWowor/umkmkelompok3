@@ -48,9 +48,9 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         global app = (global) getApplication();
-        Log.d("Debug", app.getIsLogin().toString());
-        Log.d("Debug", app.getEmail());
-        Log.d("Debug", app.getUsername());
+        Log.d("Login Status", app.getIsLogin().toString());
+        Log.d("Email", app.getEmail());
+        Log.d("Username", app.getUsername());
 
     }
 }

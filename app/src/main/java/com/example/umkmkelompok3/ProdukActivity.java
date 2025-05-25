@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProdukActivity extends AppCompatActivity {
@@ -14,6 +15,9 @@ public class ProdukActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produk);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        FlexboxLayout flexboxLayout = findViewById(R.id.flexbox);
+        Utils.fetchProducts(this, flexboxLayout, ProdukDetailActivity.class);
 
         // Set item aktif sekarang
         bottomNavigationView.setSelectedItemId(R.id.Produk);

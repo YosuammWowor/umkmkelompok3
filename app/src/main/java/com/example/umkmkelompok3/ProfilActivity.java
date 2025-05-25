@@ -51,9 +51,15 @@ public class ProfilActivity extends AppCompatActivity {
         TextView deskripsiPengguna = findViewById(R.id.deskripsiPengguna);
         deskripsiPengguna.setText(app.getDeskripsiPengguna());
 
+        // Tombol Keluar Akum
         Button btnKeluar = findViewById(R.id.btnKeluar);
         btnKeluar.setOnClickListener(v -> {
+            // Default Data dalam global variabel
             app.setIsLogin(false);
+            app.setEmail("");
+            app.setUsername("");
+
+            // Redirect to HomeActivity
             Utils.replaceActivity(ProfilActivity.this, HomeActivity.class);
         });
     }

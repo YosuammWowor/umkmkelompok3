@@ -20,9 +20,6 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ProdukDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProfilActivity"
             android:exported="false" />
         <activity
@@ -30,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".ProdukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProdukDetailActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

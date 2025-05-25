@@ -51,4 +51,7 @@ dependencies {
 
 //  FlexBox
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
+
+//  Volley
+    implementation ("com.android.volley:volley:1.2.1")
 }

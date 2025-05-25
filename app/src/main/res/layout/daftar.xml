@@ -7,70 +7,83 @@
     android:layout_gravity="center">
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:padding="30dp"
-        >
-
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/close"
-            />
+            android:padding="30dp"
+            >
 
-        <ImageView
-            android:id="@+id/umkm_logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/placeholder_background"
-            />
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/close"
+                />
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/umkm_logo"
-            android:hint="Email"/>
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/email"
-            android:hint="Username"/>
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/username"
-            android:hint="Password"/>
+            <ImageView
+                android:id="@+id/umkm_logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/placeholder_background"
+                />
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_below="@id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Daftar"/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/umkm_logo"
+                android:hint="Email"/>
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/email"
+                android:hint="Username"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/username"
+                android:hint="Password"/>
 
-        <TextView
-            android:id="@+id/linkLogin"
-            android:layout_below="@id/btnSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:text="Login?"/>
+            <ScrollView
+                android:id="@+id/scrollDeskripsiPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/password">
+                <EditText
+                    android:id="@+id/deskripsiPengguna"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deskripsi"/>
+            </ScrollView>
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_below="@id/scrollDeskripsiPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Daftar"/>
+
+            <TextView
+                android:id="@+id/linkLogin"
+                android:layout_below="@id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:text="Login?"/>
+
+        </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
