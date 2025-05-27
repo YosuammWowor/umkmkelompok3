@@ -1,6 +1,8 @@
 package com.example.umkmkelompok3;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,14 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        Spinner spMeja = findViewById(R.id.spMeja);
+        Spinner spHari = findViewById(R.id.spHari);
+        Spinner spWaktu = findViewById(R.id.spWaktu);
+        Button btnPesan = findViewById(R.id.btnPesan);
+
+        Utils utils = new Utils();
+        utils.addPemesanan(this, spMeja, spHari, spWaktu, btnPesan);
 
         // Set item aktif sekarang
         bottomNavigationView.setSelectedItemId(R.id.Order);
@@ -30,7 +40,7 @@ public class OrderActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             } else if (id == R.id.Home) {
                 Utils.replaceActivity(OrderActivity.this, HomeActivity.class);
-                overridePendingTransition(0, 0);
+                overridePendingTransition( 0, 0);
             } else {
                 if (app.getIsLogin()) {
                     Utils.replaceActivity(OrderActivity.this, ProfilActivity.class);

@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">UMKM Kelompok 3</string>
+    <string-array name="dd_meja">
+        <item>Pilih No.Meja</item>
+        <item>No.01</item>
+        <item>No.02</item>
+        <item>No.03</item>
+        <item>No.05</item>
+        <item>No.06</item>
+        <item>No.07</item>
+        <item>No.08</item>
+    </string-array>
+    <string-array name="dd_hari">
+        <item>Pilih Hari</item>
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+    </string-array>
+    <string-array name="dd_waktu">
+        <item>Pilih Waktu</item>
+        <item>Pukul 09:00 WITA</item>
+        <item>Pukul 10:00 WITA</item>
+        <item>Pukul 11:00 WITA</item>
+        <item>Pukul 12:00 WITA</item>
+        <item>Pukul 13:00 WITA</item>
+        <item>Pukul 14:00 WITA</item>
+        <item>Pukul 15:00 WITA</item>
+    </string-array>
 </resources>

@@ -1,13 +1,13 @@
 package com.example.umkmkelompok3;
 
-import static com.google.android.material.internal.ViewUtils.dpToPx;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -16,7 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
@@ -30,7 +32,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+
 public class Utils {
+    // Emulator
+    static String link = "http://10.0.2.2/MOBILE_PROGRAMMING/";
+    // External Device
+    // static String link = "http://10.0.2.2/MOBILE_PROGRAMMING/";
     public static void replaceActivity(Activity currentActivity, Class<? extends Activity> targetActivity) {
         Intent intent = new Intent(currentActivity, targetActivity);
         currentActivity.startActivity(intent);
@@ -118,10 +133,8 @@ public class Utils {
     public static void fetchProducts(Context context, FlexboxLayout flexboxLayout, Class<?> detailActivityClass) {
         RequestQueue queue = Volley.newRequestQueue(context);
         // Emulator
-//        String url = "http://10.0.2.2/MOBILE_PROGRAMMING/Produk.php";
+        String url = link + "Produk.php";
 
-        // External Device
-         String url = "http:192.168.1.5/MOBILE_PROGRAMMING/Produk.php";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
@@ -246,36 +259,83 @@ public class Utils {
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
-    /*public static void addProductCard(Context context, FlexboxLayout flexboxLayout, Produk product, Class<?> detailActivityClass) {
-        CardView card = new CardView(context);
-        card.setLayoutParams(new ViewGroup.LayoutParams(500, ViewGroup.LayoutParams.WRAP_CONTENT));
-        card.setRadius(10);
-        card.setClickable(true);
-        card.setForeground(context.getResources().getDrawable(android.R.drawable.list_selector_background, null));
+    public void addPemesanan(Context context, Spinner Meja, Spinner Hari, Spinner Waktu, Button Pesan) {
+        Pesan.setOnClickListener(v -> {
+            if (Meja.getSelectedItemPosition() != 0 && Hari.getSelectedItemPosition() != 0 && Waktu.getSelectedItemPosition() != 0) {
+                Toast.makeText(context,
+                        "Pesanan kamu: " + Meja.getSelectedItem() + ", " + Hari.getSelectedItem() + ", " + Waktu.getSelectedItem(),
+                        Toast.LENGTH_LONG).show();
 
-        LinearLayout layout = new LinearLayout(context);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setGravity(Gravity.CENTER);
+                simpanPemesanan(context, Meja, Hari, Waktu);
 
-        TextView title = new TextView(context);
-        title.setText(product.nama);
-        title.setTypeface(null, Typeface.BOLD);
-        layout.addView(title);
+                // Reset Selection
+                Meja.setSelection(0);
+                Hari.setSelection(0);
+                Waktu.setSelection(0);
 
-        TextView price = new TextView(context);
-        price.setText("Harga: " + product.harga);
-        layout.addView(price);
-
-        card.addView(layout);
-
-        card.setOnClickListener(v -> {
-            Intent intent = new Intent(context, detailActivityClass);
-            intent.putExtra("nama", product.nama);
-            intent.putExtra("deskripsi", product.deskripsi);
-            intent.putExtra("harga", product.harga);
-            context.startActivity(intent);
+            } else {
+                Toast.makeText(context, "Mohon pastikan kembali pilihan anda", Toast.LENGTH_SHORT).show();
+            }
         });
+    }
 
-        flexboxLayout.addView(card);
-    }*/
+    public void simpanPemesanan(Context context, Spinner spMeja, Spinner spHari, Spinner spWaktu) {
+        String meja = spMeja.getSelectedItem().toString();
+        String hari = spHari.getSelectedItem().toString();
+        String waktu = spWaktu.getSelectedItem().toString();
+
+        // Assuming you have a way to get username from global or session
+        global app = (global) ((Activity) context).getApplication();
+        String username = app.getUsername();
+
+        new Thread(() -> {
+            try {
+                URL url = new URL(link + "Order.php");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+                String postData = "spMeja=" + URLEncoder.encode(meja, "UTF-8")
+                        + "&spHari=" + URLEncoder.encode(hari, "UTF-8")
+                        + "&spWaktu=" + URLEncoder.encode(waktu, "UTF-8")
+                        + "&username=" + URLEncoder.encode(username, "UTF-8");
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                writer.write(postData);
+                writer.flush();
+                writer.close();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                    in.close();
+
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+                    String status = jsonResponse.getString("status");
+                    String message = jsonResponse.getString("message");
+
+                    Handler mainHandler = new Handler(Looper.getMainLooper());
+                    mainHandler.post(() -> {
+                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+                mainHandler.post(() -> {
+                    Toast.makeText(context, "Terjadi kesalahan saat mengirim data", Toast.LENGTH_LONG).show();
+                });
+            }
+        }).start();
+    }
+
 }

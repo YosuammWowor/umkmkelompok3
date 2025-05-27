@@ -12,13 +12,14 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"
         android:orientation="vertical"
+        android:gravity=""
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tvOrderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="40dp"
             android:text="Order sekarang"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -43,35 +44,32 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etMeja"
+        <Spinner
+            android:id="@+id/spMeja"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            android:hint="Nomor Meja"
-            android:inputType="number"
+            android:entries="@array/dd_meja"
             android:padding="12dp" />
 
         <TextView
-            android:id="@+id/tvHariTanggal"
+            android:id="@+id/tvHari"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Hari/Tanggal"
+            android:text="Hari"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etHariTanggal"
+        <Spinner
+            android:id="@+id/spHari"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Pilih Tanggal"
+            android:entries="@array/dd_hari"
             android:padding="12dp" />
 
         <TextView
@@ -84,15 +82,13 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etWaktu"
+        <Spinner
+            android:id="@+id/spWaktu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="#FFFFFF"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Pilih Waktu"
+            android:entries="@array/dd_waktu"
             android:padding="12dp" />
 
         <RelativeLayout
