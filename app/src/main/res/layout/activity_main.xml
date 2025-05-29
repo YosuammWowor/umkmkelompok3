@@ -17,6 +17,7 @@
         app:menu="@menu/bottom_navigation"
         app:itemIconTint="@color/nav_items_color"
         app:itemTextColor="@color/nav_items_color"
-        app:itemRippleColor="@color/darkRed" />
+        app:itemRippleColor="@color/darkRed"
+        app:backgroundTint="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

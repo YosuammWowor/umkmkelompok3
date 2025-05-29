@@ -50,6 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@color/white"
+            android:spinnerMode="dropdown"
+            android:popupBackground="@color/white"
             android:theme="@style/spOrder"
             android:entries="@array/dd_meja"
             android:padding="12dp" />
@@ -70,6 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@color/white"
+            android:spinnerMode="dropdown"
+            android:popupBackground="@color/white"
             android:theme="@style/spOrder"
             android:entries="@array/dd_hari"
             android:padding="12dp" />
@@ -90,6 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@color/white"
+            android:spinnerMode="dropdown"
+            android:popupBackground="@color/white"
             android:theme="@style/spOrder"
             android:entries="@array/dd_waktu"
             android:padding="12dp" />
@@ -122,6 +128,7 @@
         app:itemIconTint="@color/nav_items_color"
         app:itemTextColor="@color/nav_items_color"
         app:itemRippleColor="@color/darkRed"
+        app:backgroundTint="@color/white"
         />
 
 </RelativeLayout>
