@@ -2,11 +2,13 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Deskripsi:"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:textSize="18sp"/>
@@ -46,6 +49,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="Lorem Ipsum"
         android:layout_marginStart="10dp"
         android:textSize="16sp"
@@ -56,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Harga:"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:textSize="18sp"/>
@@ -64,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lorem Ipsum"
+        android:textColor="@color/black"
         android:layout_marginStart="10dp"
         android:textSize="16sp"
         android:id="@+id/detailIngredients"/>

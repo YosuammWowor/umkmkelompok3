@@ -4,86 +4,91 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    card_view:cardCornerRadius="20dp">
 
     <RelativeLayout
-            android:layout_width="350dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
-            >
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/close"
+            />
 
-            <ImageView
-                android:id="@+id/btnClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/close"
-                />
+        <ImageView
+            android:id="@+id/umkm_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo"
+            />
 
-            <ImageView
-                android:id="@+id/umkm_logo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
-                android:background="@color/placeholder_background"
-                />
+        <EditText
+            android:id="@+id/email"
+            android:layout_below="@id/umkm_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
+        <EditText
+            android:id="@+id/username"
+            android:layout_below="@id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:hint="Username"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_below="@id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="textPassword"
+            android:hint="Password"/>
 
+        <ScrollView
+            android:id="@+id/scrollDeskripsiPengguna"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/password">
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/deskripsiPengguna"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:layout_below="@id/umkm_logo"
-                android:hint="Email"/>
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/email"
-                android:hint="Username"/>
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/username"
-                android:hint="Password"/>
+                android:inputType="text"
+                android:hint="Deskripsi"/>
+        </ScrollView>
 
-            <ScrollView
-                android:id="@+id/scrollDeskripsiPengguna"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/password">
-                <EditText
-                    android:id="@+id/deskripsiPengguna"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Deskripsi"/>
-            </ScrollView>
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_below="@id/scrollDeskripsiPengguna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#BE2D28"
+            android:text="Daftar"
+            android:textColor="@color/white"
+            />
 
-            <Button
-                android:id="@+id/btnSubmit"
-                android:layout_below="@id/scrollDeskripsiPengguna"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="Daftar"/>
+        <TextView
+            android:id="@+id/linkLogin"
+            android:layout_below="@id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:text="Login?"/>
 
-            <TextView
-                android:id="@+id/linkLogin"
-                android:layout_below="@id/btnSubmit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="20dp"
-                android:text="Login?"/>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

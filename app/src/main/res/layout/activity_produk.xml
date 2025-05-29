@@ -4,21 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple"
+    android:background="@color/black"
     tools:context=".ProdukActivity">
 
-    <!--  ScrollView digunakan agar bisa geser apabila item melebihi frame  -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"
         android:fillViewport="true">
 
+        <!--  Content  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/yellow">
+            android:background="#FB9D4B">
 
             <!-- Judul Halaman -->
             <TextView
@@ -27,13 +27,13 @@
                 android:layout_marginTop="20dp"
                 android:text="DAFTAR MENU"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textAlignment="center"
                 android:textSize="32dp"/>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/red"
+                android:layout_height="3dp"
+                android:background="#EDFAFD"
                 android:layout_margin="10dp"/>
 
             <com.google.android.flexbox.FlexboxLayout
@@ -47,15 +47,13 @@
         </LinearLayout>
     </ScrollView>
 
-    <!--  Menu Navigasi Bawah  -->
+    <!--  Menu Navigasi  -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
+        android:paddingVertical="5dp"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation" />
 

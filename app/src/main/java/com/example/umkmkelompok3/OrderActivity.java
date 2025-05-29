@@ -8,30 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class OrderActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        Spinner spMeja = findViewById(R.id.spMeja);
-        Spinner spHari = findViewById(R.id.spHari);
-        Spinner spWaktu = findViewById(R.id.spWaktu);
-        Button btnPesan = findViewById(R.id.btnPesan);
+        // Fungsi Pemesanan
+        Utils.addPemesanan(OrderActivity.this, this);
 
-        Utils utils = new Utils();
-        utils.addPemesanan(this, spMeja, spHari, spWaktu, btnPesan);
-
-        // Set item aktif sekarang
+        // Menu Navigasi
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.Order);
 
+        // Aksi Menu Navigasi
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
-            global app = (global) getApplication();
 
             if (id == R.id.Order) {
                 // This Class
@@ -42,12 +36,8 @@ public class OrderActivity extends AppCompatActivity {
                 Utils.replaceActivity(OrderActivity.this, HomeActivity.class);
                 overridePendingTransition( 0, 0);
             } else {
-                if (app.getIsLogin()) {
-                    Utils.replaceActivity(OrderActivity.this, ProfilActivity.class);
-                    overridePendingTransition(0, 0);
-                } else {
-                    Utils.popUpLogin(OrderActivity.this); // Sekarang ini fungsi dari parent
-                }
+                Utils.replaceActivity(OrderActivity.this, ProfilActivity.class);
+                overridePendingTransition(0, 0);
             }
             return true;
         });
